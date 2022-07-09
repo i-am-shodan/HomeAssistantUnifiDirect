@@ -76,7 +76,7 @@ class UnifiDeviceScanner(DeviceScanner):
     def _connect(self):
         """Connect to the Unifi AP SSH server."""
 
-        self.ssh = pxssh.pxssh()
+        self.ssh = pxssh.pxssh(options={"HostKeyAlgorithms": "ssh-rsa"})
         try:
             self.ssh.login(
                 self.host, self.username, password=self.password, port=self.port
